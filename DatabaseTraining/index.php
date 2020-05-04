@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <!--Functions-->
 <?php require_once ("functions.php");?>
