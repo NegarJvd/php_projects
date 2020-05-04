@@ -17,6 +17,6 @@ function CloseDataBase($data){
 }
 ?>
 
-Then create a database named * and inside it a table named *.
+Then create a database named "php_learning_info" and inside it a table named "users_info".
 User information will be stored in this table.
 You can change these names, just note that you can also change them within the relevant files.
