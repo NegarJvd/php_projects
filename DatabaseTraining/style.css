@@ -49,6 +49,14 @@ input[type="submit"] {
     margin-top: 2%;
 }
 
+select {
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px 4px rgba(0, 0, 0, 0.3);
+}
+
 .center{
     margin-left: 35%;
 }
