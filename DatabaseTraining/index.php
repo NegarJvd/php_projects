@@ -53,36 +53,18 @@
 
         <div><p>
             <h1 style="text-align: center;">Search For Information</h1>
-            <h5 style="text-align: center; color: red">Just fill in one of the fields below.</h5>
             <form method="get" action="searchInfo.php">
-                <label>Search by first name: </label>
-                <br>
-                <span><input type="text" name="sFName"></span>
-                <br><br>
-
-                <label>Search by last name: </label>
-                <br>
-                <span><input type="text" name="sLName"></span>
-                <br><br>
-
-                <label>Search by date of birth: </label>
-                <br>
-                <span><input type="date" name="sBirth"></span>
-                <br><br>
-
-                <label>Search by number: </label>
-                <br>
-                <span><input type="number" name="sNumber"></span>
-                <br><br>
-
-                <label>Search by email: </label>
-                <br>
-                <span><input type="email" name="sEmail"></span>
-                <br><br>
-
-                <label>Search by address: </label>
-                <br>
-                <span><input type="text" name="sAddress"></span>
+                <label>Search by:</label>
+                <select name="select">
+                    <option value="null">Select item</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last name</option>
+                    <option value="dateOfBirth">Date of birth</option>
+                    <option value="phoneNumber">Number</option>
+                    <option value="email">Email</option>
+                    <option value="address">Address</option>
+                </select>
+                <input type="text" placeholder="search" name="search" style="width: 290px">
                 <input type="submit">
             </form>
          </p></div>
