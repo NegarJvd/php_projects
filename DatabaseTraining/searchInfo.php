@@ -5,49 +5,13 @@ require_once("database.php");
 require_once("functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "GET"){
-    if (isset($_REQUEST['sFName']) || isset($_REQUEST['sLName']) || isset($_REQUEST['sBirth']) || isset($_REQUEST['sNumber']) || isset($_REQUEST['sEmail']) || isset($_REQUEST['sAddress']) ) {
-
-        $sFName = test_input($_REQUEST['sFName']);
-        $sLastName = test_input($_REQUEST['sLName']);
-        $sBirth = test_input($_REQUEST['sBirth']);
-        $sNumber = test_input($_REQUEST['sNumber']);
-        $sEmail = test_input($_REQUEST['sEmail']);
-        $sAddress = test_input($_REQUEST['sAddress']);
+    if ($_REQUEST['select'] != "null"){
+        $searchBy = $_REQUEST['select'];
+        $value = test_input($_REQUEST['search']);
 
         //search data in database
         $sdb = OpenDataBase("php_learning_info");
-        $q = "SELECT * FROM users_info WHERE ";
-
-        //by first name
-        if ($sFName != null){
-            $q .= "firstName='$sFName'";
-        }
-
-        //by last name
-        elseif ($sLastName != null){
-            $q .= "lastName='$sLastName'";
-        }
-
-        //by date of birth
-        elseif ($sBirth != null){
-            $q .= "dateOfBirth='$sBirth'";
-        }
-
-        //by phone number
-        elseif ($sNumber != null){
-            $q .= "phoneNumber='$sNumber'";
-        }
-
-        //by email
-        elseif ($sEmail != null){
-            $q .= "email='$sEmail'";
-        }
-
-        //by address
-        elseif ($sAddress != null){
-            $q .= "address='$sAddress'";
-        }
-
+        $q = "SELECT * FROM users_info WHERE " . $searchBy . "='" . $value ."'" ;
         $result = $sdb->query($q);
 
         if ($result -> num_rows >0) {
@@ -60,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
             echo "NOT FOUND! ";
         }
         CloseDataBase($sdb);
+    }
+    else{
+        echo "<b>Please Select an item!</b>";
     }
 }
 ?>
