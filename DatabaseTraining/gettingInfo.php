@@ -43,14 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $query = "INSERT INTO users_info (firstName, lastName, dateOfBirth, phoneNumber , email, address) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = $db -> prepare($query);
-    $stmt -> bind_param("ssssss", $firstName, $lastName, $dateOfBirth, $phoneNumber , $email, $address);
-
-    $firstName = $name;
-    $lastName = $lastName;
-    $dateOfBirth = $birth;
-    $phoneNumber = $number;
-    $email = $email;
-    $address = $address;
+    $stmt -> bind_param("ssssss", $name, $lastName, $birth, $number , $email, $address);
     $stmt -> execute();
     CloseDataBase($db);
 }
