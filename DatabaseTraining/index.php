@@ -65,8 +65,8 @@
                     <option value="address">Address</option>
                 </select>
                 <input type="text" placeholder="search" name="search" style="width: 290px">
-                <input type="submit">
             </form>
+            <p id="showSuggestion"></p>
          </p></div>
 
 <!----------------------------------------------------------------------------------------------------------------------->
