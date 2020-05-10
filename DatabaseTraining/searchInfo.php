@@ -5,27 +5,42 @@ require_once("database.php");
 require_once("functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "GET"){
-    if ($_REQUEST['select'] != "null"){
-        $searchBy = $_REQUEST['select'];
-        $value = test_input($_REQUEST['search']);
+    $searchBy = test_input($_GET['searchBy']);
+    $value = test_input($_GET['value']);
 
-        //search data in database
+    if ($searchBy != "null") {
         $sdb = OpenDataBase("php_learning_info");
-        $q = "SELECT * FROM users_info WHERE " . $searchBy . "='" . $value ."'" ;
-        $result = $sdb->query($q);
 
-        if ($result -> num_rows >0) {
+        $query = "SELECT * FROM users_info WHERE {$searchBy}='{$value}'";
+        $result = $sdb->query($query);
+
+        if ($result->num_rows > 0) {
+            echo "<table>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date Of Birth</th>
+                        <th>Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                    </tr>
+                    <tr>";
             while ($row = $result->fetch_assoc()) {
-                //echo $row["id"]. ") ";
-                echo $row["firstName"]. " " . $row["lastName"] . "<br>" . $row["dateOfBirth"] . "<br>" . $row["phoneNumber"] . "<br>" . $row["email"] . "<br>" . $row["address"];
-                echo "<br>";
+
+                echo "<td>{$row["firstName"]}</td>
+                  <td>{$row["lastName"]}</td>
+                  <td>{$row["dateOfBirth"]}</td>
+                  <td>{$row["phoneNumber"]}</td>
+                  <td>{$row["email"]}</td>
+                  <td>{$row["address"]}</td>";
+                echo "</tr>";
             }
-        }else{
+            echo "</table>";
+        } else {
             echo "NOT FOUND! ";
         }
         CloseDataBase($sdb);
-    }
-    else{
+    }else{
         echo "<b>Please Select an item!</b>";
     }
 }
